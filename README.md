@@ -101,6 +101,20 @@ const getUserAllFields = async (req: Request, res: Response) => {
 }
 ```
 
+change for:
+
+```
+const getUserAllFields = async (req: Request, res: Response) => {
+...
+ /**Create subprocess */
+   ...
+      await sleep(700);  
+    ...
+    }  
+  ...
+}
+```
+
 
 2 - Another point that should be noted is that I did not find the countryCode field of the address listing when I return the data from the '/users/{idUser}/address' route
 
