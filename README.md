@@ -67,8 +67,64 @@ With the application running, enter the route http://localhost:3030/users , afte
 
 ## Points of difficulty and improvement
 
-During the development of application process 4 or 29 it was found that the number of service errors was not very evident. This was the most difficult point,
+1 - During the development of application process 429 it was found that the number of service errors was not very evident. This was the most difficult point,
 it was difficult to get around it did not have the information on the limit of requests that can be sent in a certain period of time. This difficulty was overcome by a timeout in the subprocess responsible for building the response in the '/users' route.
-Although it worked, the request was slower. Please if you have error 429 try increasing the parameter of the sleep function this should solve until we find the best solution for this problem.
+Although it worked, the request was slower. 
 
-Another point that should be noted is that I did not find the countryCode field of the address listing when I return the data from the '/users/{idUser}/address' route, so this problem was circumvented by just joining the first two initials of the country field
+```
+(node:8188) UnhandledPromiseRejectionWarning: Error: Request failed with status code 429
+    at createError (C:\Users\icoelho4\Desktop\desafio\LinkAPI-Desefio-Jr\mockApiConsume\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\icoelho4\Desktop\desafio\LinkAPI-Desefio-Jr\mockApiConsume\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\icoelho4\Desktop\desafio\LinkAPI-Desefio-Jr\mockApiConsume\node_modules\axios\lib\adapters\http.js:322:11)
+    at IncomingMessage.emit (events.js:412:35)
+    at IncomingMessage.emit (domain.js:470:12)
+    at endReadableNT (internal/streams/readable.js:1317:12)
+    at processTicksAndRejections (internal/process/task_queues.js:82:21)
+(node:8188) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 4)
+```
+
+**Solution**
+
+Please if you have error 429 try increasing the parameter of the sleep function this should solve until we find the best solution for this problem.
+example: change sleep(600) for sleep(700)
+
+in gateway/src/controllers/user.ts
+```
+const getUserAllFields = async (req: Request, res: Response) => {
+...
+ /**Create subprocess */
+   ...
+      await sleep(600);  
+    ...
+    }  
+  ...
+}
+```
+
+
+2 - Another point that should be noted is that I did not find the countryCode field of the address listing when I return the data from the '/users/{idUser}/address' route
+
+![image](https://user-images.githubusercontent.com/38250160/161597020-f31cfe9d-824a-4a75-b31f-20dbab56ea0c.png)
+
+**Solution**
+
+so this problem was solved by just joining the first two initials of the country field.
+
+in mockApiConsume/src/controlles/users.ts
+
+```
+const getUserAllFields = async (req: Request, res: Response) => {
+ ...
+ for (let n:number=0; n < address.length; n++ ){       
+        allAddress= {
+            ...
+            countryCode: (address[n].country).substring(0, 2).toUpperCase(),
+            ...
+        }
+
+...
+}
+ countryCode: (address[n].country).substring(0, 2).toUpperCase(),
+``` 
+
+
