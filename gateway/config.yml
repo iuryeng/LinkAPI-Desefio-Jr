@@ -1,0 +1,4 @@
+--- # Gateway services
+services:
+  - name: subprocess, mokiapi
+  - url: http://localhost:3000, https://${parameterHost}.mockapi.io/api/v1
