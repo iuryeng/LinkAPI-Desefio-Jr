@@ -9,7 +9,7 @@ Make sure you have Node.js and a tool for interacting with web-based APIs instal
 
 This application was developed using node version 14.17.6
 
-### ***Run the app in localhost ***
+### ***Run the app in localhost***
 
 follow the steps below:
 
@@ -56,7 +56,7 @@ follow the steps below:
 
 |HTTP method|Route|Description|
 |-|-|-|
-|GET|http://localhost:3000/users/{userId}| get user with groups address and contact for this specific user*/|
+|GET|http://localhost:3000/users/fields/{userId}| get user with groups address and contact for this specific user*/|
 
 
 2. Validation of Requirements:
