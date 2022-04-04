@@ -92,9 +92,7 @@ We analyzed 10 responses of the api gatway in the user route and it was conclude
 
 ## Points of difficulty and improvement
 
-1 - During the development of application process 429 it was found that the number of service errors was not very evident. This was the most difficult point,
-it was difficult to get around it did not have the information on the limit of requests that can be sent in a certain period of time. This difficulty was overcome by a timeout in the subprocess responsible for building the response in the '/users' route.
-Although it worked, the request was slower. 
+1 - During the application development phase, it was found that in the sub-process of building the users route data, the status code 429 appeared very frequently. This indicated that the gatway api sent too many requests in a certain amount of time and probably the mockapi did not support the large number of requests in a certain amount of time. This was the most difficult point as I had not informed about the limit of requests that can be sent in a certain period of time for this mockapi service. This difficulty was overcome by placing a time limit on the subprocess responsible for building the response in the '/users' route of 600ms. While this solution worked, the request was slower. The error below exemplifies the occurrence in the mockapi service response: 
 
 ```
 (node:8188) UnhandledPromiseRejectionWarning: Error: Request failed with status code 429
