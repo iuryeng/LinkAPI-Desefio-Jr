@@ -1,7 +1,14 @@
 
 ##  REST API GATEWAY (LinkApi by Semantix)
 
-This API was built as a resolution of the [Technical Challenge LinkApi - Junior] 
+**_This API was built as a resolution of the [Technical Challenge LinkApi - Junior]_** 
+
+*_Requested delivery date: 04/04/2022_*
+
+*_Started: 02/04/2022_* 
+
+*_Delivered to: 04/04/2022_*
+
 
 ### ***Prerequisites***
 
@@ -11,7 +18,7 @@ This application was developed using node version 14.17.6
 
 ### ***Run the app in localhost***
 
-follow the steps below:
+After steps make sure port 3030 and 3000 are not in use, follow the steps below:
 
 1. inside  directory of your choice and clone the application with: 
 
@@ -65,6 +72,24 @@ With the application running, enter the route http://localhost:3030/users , afte
 
 ![image](https://user-images.githubusercontent.com/38250160/161574612-8e143efd-a307-49a2-a78a-54bffa4cb391.png)
 
+
+## Quick analysis of performance api gatway in users router
+
+We analyzed 10 responses of the api gatway in the user route and it was concluded that on average the respot time is  ***217 seconds***. It was also noticed that in some requests the status code 429 was observed. In the table below it is possible to see the approximate time of each test
+
+|Test|Response Time (s)|Status|
+|-|-|-|
+|1|209|200|
+|2|279|200|
+|3|211|200|
+|4|208|200|
+|5|210|304|
+|6|208|304|
+|7|208|200|
+|8| - |429|
+|9| - |429|
+|10|208|200|
+
 ## Points of difficulty and improvement
 
 1 - During the development of application process 429 it was found that the number of service errors was not very evident. This was the most difficult point,
@@ -115,7 +140,6 @@ const getUserAllFields = async (req: Request, res: Response) => {
 }
 ```
 
-
 2 - Another point that should be noted is that I did not find the countryCode field of the address listing when I return the data from the '/users/{idUser}/address' route
 
 ![image](https://user-images.githubusercontent.com/38250160/161597020-f31cfe9d-824a-4a75-b31f-20dbab56ea0c.png)
@@ -140,5 +164,15 @@ const getUserAllFields = async (req: Request, res: Response) => {
 }
  countryCode: (address[n].country).substring(0, 2).toUpperCase(),
 ``` 
+## Improvement points
 
+1 - Implement automated tests on api routes. Example, usage Jest
+
+2 - Implement  automate security into the API development pipeline. Example, usage 42cruch
+
+3 - Acceleration open source adoption with scalable end license compliance and vulnerabilities. Example, FOSSA
+
+4 - A Retry-After header  in API service mock indicating how long to wait before making a new request. 
+
+5 - Use environment variables and dotenv module to hide sensitive API data. Example, module dotenv for typescript
 
