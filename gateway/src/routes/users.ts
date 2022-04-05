@@ -1,12 +1,11 @@
+import dotenv from 'dotenv'
 import express from 'express';
 import controlles from '../controllers/user'
 import httpProxy from 'express-http-proxy';
+dotenv.config();
 
 const router = express.Router();
-
-const parameterHost = "62151ae9cdb9d09717adf48c";
-const baseURL = `https://${parameterHost}.mockapi.io/api/v1`;
-
+const baseURL= process.env.BASE_URL??'';
 
 /** Get users in service mockApi with http proxy */
 router.get('/users/:id', httpProxy(baseURL, {timeout: 3000}));

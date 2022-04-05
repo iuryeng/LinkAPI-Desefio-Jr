@@ -1,12 +1,10 @@
-import express from 'express';
+import dotenv from 'dotenv'
 import { Request, Response } from 'express';
-import axios, { Axios, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
+dotenv.config();
 
-const router = express.Router();
-
-const parameterHost = "62151ae9cdb9d09717adf48c"
-const baseURL = `https://${parameterHost}.mockapi.io/api/v1`
-const serviceURL = 'http://localhost:3000/users/'
+const baseURL = process.env.BASE_URL;
+const serviceURL = process.env.BASE_URL_SERVICE;
 
 interface User {
   createdAt: String;
@@ -43,22 +41,24 @@ interface AllUserFild {
 }
 
 const getUserAllFields = async (req: Request, res: Response) => {
-    let id: number
-    let array = []
+
+
+    let id: number;
+    let array = [];
     /** Get all users */
-    let result: AxiosResponse = await axios.get(baseURL + '/users')
+    let result: AxiosResponse = await axios.get(baseURL + '/users');
     let users: [User] = result.data;
     
-    /**Log runnib process */
-    console.log("   running subprocess")
-    process.stdout.write('Please loading subprocess:')
+    /**Log running process */
+    console.log("   running subprocess");
+    process.stdout.write('Please loading subprocess:');
     
     /**Create subprocess */
     for (id = 1; id < users.length + 1; id ++ ){
       //search address and contact for each user
-      let result : AxiosResponse = await axios.get( serviceURL + `${id}` + '/fields')
-      let arrayUsers: [AllUserFild] = result.data
-      array.push(arrayUsers)        
+      let result : AxiosResponse = await axios.get( serviceURL + `${id}` + '/fields');
+      let arrayUsers: [AllUserFild] = result.data;
+      array.push(arrayUsers);
       await sleep(700);  
       process.stdout.write(`==`);
     }  
