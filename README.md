@@ -38,7 +38,7 @@ After steps make sure port 3030 and 3000 are not in use, follow the steps below:
 
 5. start mockApiConsume:
 
-- ```npm run startgit ```
+- ```npm run start ```
 
 *After installing the modules and starting your application should look like the image below:*
 
