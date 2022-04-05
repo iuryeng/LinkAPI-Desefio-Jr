@@ -6,6 +6,6 @@ const baseURL = `https://62151ae9cdb9d09717adf48c.mockapi.io/api/v1`
 const router = express.Router();
 
 
-router.get('/users/fields/:id', controller.getUserAllFields);
+router.get('/users/:id/fields', controller.getUserAllFields);
 
 export = router;
