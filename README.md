@@ -53,17 +53,19 @@ After steps make sure port 3030 and 3000 are not in use, follow the steps below:
 
 |HTTP method|Route|Description|
 |-|-|-|
+|GET|http://localhost:3030/api-docs| test all aplication routers|
 |GET|http://localhost:3030/users|get all users with groups address and contact for each user|
 |GET|http://localhost:3030/users/{userId}|get users in service mockApi with http proxy |
 |GET|http://localhost:3030/users/{userId}/address|get address from a specific user with http proxy|
 |GET|http://localhost:3030/users/{userId}/contacts|get contact from a specific user with http proxy|
 
 
+
 - Route of ApiMockConsume
 
 |HTTP method|Route|Description|
 |-|-|-|
-|GET|http://localhost:3000/users/fields/{userId}| get user with groups address and contact for this specific user*/|
+|GET|http://localhost:3000/users/{id}/fields| get user with groups address and contact for this specific user|
 
 
 2. Validation of Requirements:
