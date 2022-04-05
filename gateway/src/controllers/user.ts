@@ -6,7 +6,7 @@ const router = express.Router();
 
 const parameterHost = "62151ae9cdb9d09717adf48c"
 const baseURL = `https://${parameterHost}.mockapi.io/api/v1`
-const serviceURL = 'http://localhost:3000/users/fields/'
+const serviceURL = 'http://localhost:3000/users/'
 
 interface User {
   createdAt: String;
@@ -54,9 +54,9 @@ const getUserAllFields = async (req: Request, res: Response) => {
     process.stdout.write('Please loading subprocess:')
     
     /**Create subprocess */
-    for (id = 1; id < users.length + 1; id ++ ){       
+    for (id = 1; id < users.length + 1; id ++ ){
       //search address and contact for each user
-      let result : AxiosResponse = await axios.get( serviceURL + `${id}`)
+      let result : AxiosResponse = await axios.get( serviceURL + `${id}` + '/fields')
       let arrayUsers: [AllUserFild] = result.data
       array.push(arrayUsers)        
       await sleep(700);  
