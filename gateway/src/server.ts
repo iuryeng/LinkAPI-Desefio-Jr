@@ -2,6 +2,8 @@
 import http from 'http';
 import express, { application, Express } from 'express';
 import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocs from '../swagger.json'
 import { resolve } from 'path'
 import { readFileSync } from 'fs'
 import * as yaml  from 'js-yaml'
@@ -30,6 +32,9 @@ router.get('/', (req, res)=>{
 
 /** Router gateway proxy users and mockapi subprocess */
 router.use('/', routes);
+
+/** Swagger documentation */
+router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 /** Error handling */
 router.use((req, res) => {

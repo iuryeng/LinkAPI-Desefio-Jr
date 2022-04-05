@@ -1,0 +1,196 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API GATEWAY Desafio Jr (LinkAPI by Semantix)",
+    "description": "This API aims to test the backend development knowledge proposed from the Jr.",
+    "contact": {
+      "email": "iurycoelho.eng@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/users": {
+      "servers": [
+        {
+          "url": "http://localhost:3030",
+          "description": "test gateway api"
+        }
+      ],
+      "get": {
+        "summary": "Get all users",
+        "description": "Groups information user, address and contact for all users",
+        "operationId": "getUsers",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Many requests in server service"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "servers": [
+        {
+          "url": "http://localhost:3030",
+          "description": "test gateway api"
+        }
+      ],
+      "get": {
+        "summary": "Get one single user",
+        "description": "Get information for especific user",
+        "operationId": "getUserById",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Many requests in server service"
+          }
+        }
+      }
+    },
+    "/users/{id}/fields": {
+      "servers": [
+        {
+          "url": "http://localhost:3000",
+          "description": "test service consume in mockapi"
+        }
+      ],
+      "get": {
+        "summary": "Get one single user",
+        "description": "Get information for especific user",
+        "operationId": "getAllFieldsUserById",
+        "tags": [
+          "UserFields"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Many requests in server service"
+          }
+        }
+      }
+    },
+    "/users/{id}/address": {
+      "servers": [
+        {
+          "url": "http://localhost:3030",
+          "description": "test gatway api"
+        }
+      ],
+      "get": {
+        "summary": "Get address one single user",
+        "description": "Get address information for especific user",
+        "operationId": "getAddressUserById",
+        "tags": [
+          "UserAddress"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Many requests in server service"
+          }
+        }
+      }
+    },
+    "/users/{id}/contacts": {
+      "servers": [
+        {
+          "url": "http://localhost:3030",
+          "description": "test gatway api"
+        }
+      ],
+      "get": {
+        "summary": "Get contacts one single user",
+        "description": "Get contacts information for especific user",
+        "operationId": "getContactsUserById",
+        "tags": [
+          "UserContacts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Many requests in server service"
+          }
+        }
+      }
+    }
+  }
+}
