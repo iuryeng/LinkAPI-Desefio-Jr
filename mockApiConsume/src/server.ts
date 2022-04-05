@@ -1,4 +1,5 @@
-/** source/server.ts */
+/** src/server.ts */
+import dotenv from 'dotenv';
 import http from 'http';
 import express, { Express } from 'express';
 import morgan from 'morgan';
@@ -6,8 +7,8 @@ import routes from './routes/users';
 
 const exec = require('child_process').exec
 const router: Express = express();
-/** Logging */
 
+/** Logging */
 router.use(morgan('dev'));
 
 /** Takes care of JSON data */
@@ -42,8 +43,9 @@ router.use((req, res, next) => {
 });
 
 /** Server */
+dotenv.config();
 const httpServer = http.createServer(router);
-const PORT: any = process.env.PORT ?? 3000;
+const PORT: any = process.env.PORT;
 httpServer.listen(PORT, () => console.log(` ✔️  Server started on port ${PORT}`));
 
 //send sign for kill port after and close http server

@@ -1,4 +1,5 @@
 /** src/controllers/users.ts */
+import dotenv from 'dotenv';
 import { Request, Response } from 'express';
 import axios, { AxiosResponse } from 'axios';
 
@@ -31,9 +32,10 @@ interface  Contacts {
 }
 
 
-const parameterHost = "62151ae9cdb9d09717adf48c"
-const baseURL = `https://${parameterHost}.mockapi.io/api/v1`
+dotenv.config();
+const baseURL = process.env.BASE_URL
 const router = "/users"
+
 
 /** Groups address and contact for a specific user*/
 const getUserAllFields = async (req: Request, res: Response) => {
