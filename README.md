@@ -174,5 +174,5 @@ const getUserAllFields = async (req: Request, res: Response) => {
 
 4 - A Retry-After header  in API service mock indicating how long to wait before making a new request. 
 
-5 - Use environment variables and dotenv module to hide sensitive API data. Example, module dotenv for typescript
+
 
